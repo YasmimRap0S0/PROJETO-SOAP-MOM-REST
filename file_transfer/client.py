@@ -13,7 +13,7 @@ def upload_file(stub, file_path):
 def main():
     channel = grpc.insecure_channel('localhost:50051')
     stub = file_transfer_pb2_grpc.FileTransferStub(channel)
-    file_path = input("Enter the .txt file to upload: ")
+    file_path = input("Entre com o nome do arquivo .txt para fazer o upload: ")
     upload_file(stub, f"files/{file_path}")
 
 if __name__ == "__main__":
