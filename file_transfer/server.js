@@ -4,13 +4,21 @@ const fs = require('fs');
 
 const PROTO_PATH = './file_transfer.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH);
-const {FileTransfer} = grpc.loadPackageDefinition(packageDefinition);
+const { FileTransfer } = grpc.loadPackageDefinition(packageDefinition);
+
+// Função para gerar um ID único
+const generateId = () => {
+    return Date.now();  // Você pode usar um UUID aqui também, se preferir
+};
 
 const uploadFile = (call, callback) => {
     const { filename, content } = call.request;
 
+    // Salva o arquivo
     fs.writeFileSync(`./files/upload-${filename}`, content);
-    callback(null, { message: `Arquivo upload-${generateId}-${filename} carregado com sucesso!` });
+
+    // Retorna uma resposta com o ID gerado e o nome do arquivo
+    callback(null, { message: `Arquivo upload-${generateId()}-${filename} carregado com sucesso!` });
 };
 
 const server = new grpc.Server();
