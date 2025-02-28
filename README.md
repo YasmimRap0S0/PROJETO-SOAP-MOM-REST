@@ -17,6 +17,9 @@
 
 ### Exemplos de Uso
 
+ `git clone https://github.com/larisamara/DesenvolvimentosDeSistemaDistribuidos.git `
+  `cd DesenvolvimentosDeSistemaDistribuidos`
+
 execute no terminal: `node server.js`
 
 ```bash

@@ -10,7 +10,7 @@ const uploadFile = (call, callback) => {
     const { filename, content } = call.request;
 
     fs.writeFileSync(`./files/upload-${filename}`, content);
-    callback(null, { message: `Arquivo upload-${generateId}-${filename} carregado com sucesso!` });
+    callback(null, { message: `Arquivo upload-${filename} carregado com sucesso!` });
 };
 
 const server = new grpc.Server();
